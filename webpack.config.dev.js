@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = {
@@ -17,6 +18,8 @@ module.exports = {
         port: 8080, //port that we're using for local host (localhost:8080)
         static: path.resolve(appDirectory, "resources"), //tells webpack to serve from the public folder
         hot: true, //allows us to update the page without refreshing
+        https: true, //allows us to use https
+        compress: true, //allows us to compress the files
         devMiddleware: {
             publicPath: "/", //tells webpack to serve from the root directory
         }
